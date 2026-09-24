@@ -1,9 +1,9 @@
-﻿### Beschreibung
+﻿### 说明
 
-Der hier angegebene Name wird an verschiedenen Stellen verwendet, um diesen Kanal wiederzufinden.
+这里输入的名称会在多个位置用于识别该通道。
 
-* Seitenbeschreibung des Kanals
-* Name vom Kommunikationsobjekt
+* 通道的页面说明
+* 通信对象的名称
 
-Eine aussagekräftige Benennung erlaubt eine einfachere Orientierung innerhalb der Applikation, vor allem wenn man viele Kanäle nutzt.
+使用有意义的名称可以让应用内的导航更容易，尤其是在通道很多的时候。
 

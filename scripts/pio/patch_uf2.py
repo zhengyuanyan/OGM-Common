@@ -23,7 +23,9 @@ def post_program_action(source, target, env):
         print("  Rebuilding firmware.uf2 from firmware.elf")
         print("  " + commandstring)
         exec_command(commandstring, shell=True)
-    content = open("include/knxprod.h", 'r').read()
+    # knxprod.h 由 OpenKNXproducer 生成, 含 UTF-8 中文注释。必须显式指定编码:
+    # 否则在中文(GBK)区域的 Windows 上, Python 默认用 gbk 解码 -> UnicodeDecodeError
+    content = open("include/knxprod.h", 'r', encoding='utf-8', errors='ignore').read()
 
     m = re.search("#define MAIN_OpenKnxId (0x)?([0-9A-Fa-f]{1,2})", content)
     if m is None:
@@ -55,7 +57,7 @@ def post_program_action(source, target, env):
     m = re.search(r"#define MAIN_FirmwareRevision (\d{1,2})", content)
     if m is None:
         # Old style, read from main.cpp
-        content = open(env["PROJECT_SRC_DIR"] + "/main.cpp", 'r').read()
+        content = open(env["PROJECT_SRC_DIR"] + "/main.cpp", 'r', encoding='utf-8', errors='ignore').read()
         m = re.search("const uint8_t firmwareRevision = ([0-9]+);", content)
         if m is None:
             print("{}  {}{}".format(console_color.RED, "Error: FirmwareRevision not readable", console_color.END))

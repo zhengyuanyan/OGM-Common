@@ -1,4 +1,4 @@
-﻿### Kommentar
+﻿### 注释
 
-Hier kann man einen Freitext eingeben, der den Kanal beschreibt. Dieser Text kann mehrzeilig sein. Leider unterstütz die ETS von sich aus keine mehrzeiligen Texte. Mit dem Button unter der Textbox kann man alle Eingaben der Zeichenfolge '\n' in neue Zeilen umwandeln lassen. 
+这里可以输入一段自由文本，用于描述该通道。这段文本可以是多行的。遗憾的是 ETS 本身不支持多行文本。通过文本框下面的按钮，可以把输入中出现的字符序列 '\n' 转换为换行。 
 

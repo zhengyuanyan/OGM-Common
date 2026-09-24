@@ -1,18 +1,18 @@
-﻿### Sommerzeit ermitteln durch
+﻿### 夏令时判定方式
 
-Hier kann man eine der verfügbaren Möglichkeiten auswählen, mit der das Gerät ermitteln kann, ob gerade die Sommerzeit aktiv ist.
+在这里可以从可用的方式中选择一种，用于设备判断当前是否处于夏令时。
 
-#### Kommunikationsobjekt 'Sommerzeit aktiv'
+#### 通信对象“夏令时激活”
 
-Wird diese Option ausgewählt, muss über das Kommunikationsobjekt 'Sommerzeit aktiv' dem Gerät mitgeteilt werden, ob gerade die Sommerzeit aktiv ist.
+选择该选项时，必须通过“夏令时激活”通信对象把当前是否处于夏令时告知设备。
 
-#### Kombiniertem Datum/Zeit-KO (DPT 19)
+#### 组合日期/时间 KO（DPT 19）
 
-Erscheint nur, wenn der Datum- bzw. Zeitempfang über ein kombiniertes Datum/Zeit-KO (DPT 19) gewählt worden ist.
+只有在日期/时间通过组合日期/时间 KO（DPT 19）接收时才会出现。
 
-Wenn der Datum- bzw. Zeitempfang über ein kombiniertes Datum/Zeit-KO (DPT 19) gewählt worden ist, kann dieses Zeittelegramm auch die Information enthalten, ob gerade die Sommerzeit aktiv ist. Wenn der Zeitgeber im System diese Information mit dem DPT 19-Telegramm mitschicken kann, sollte diese Option gewählt werden.
+如果日期/时间通过组合日期/时间 KO（DPT 19）接收，则该时间报文也可以包含当前是否处于夏令时的信息。如果系统中的时间发送器能在 DPT 19 报文中一并发送该信息，建议选择此选项。
 
-#### Interne Berechnung
+#### 内部计算
 
-Diese Option berechnet anhand der eingestellten Zeitzone die Sommerzeit.
+该选项根据所设置的时区计算夏令时。
 

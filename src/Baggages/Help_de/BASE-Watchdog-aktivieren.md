@@ -1,12 +1,12 @@
-﻿### Watchdog aktivieren
+﻿### 启用看门狗
 
-Trotz hohen Qualitätsansprüchen, vielfältigen Tests und langem produktiven Einsatz kann man nie ausschließen, dass noch Fehler in der Firmware enthalten sind. Besonders ärgerlich sind Fehler, die ein Hardwaremodul zum hängen bringen und so die Funktion eingestellt wird.
+尽管有较高的质量要求、大量的测试和长期的实际使用，也永远无法完全排除固件中仍存在缺陷的可能。尤其令人头疼的是会让硬件模块卡死、从而停止工作的缺陷。
 
-Das Gerät bringt einen Watchdog mit, welcher es erlaubt, in Situationen, die einem "Hänger" entsprechen, die Hardware automatisch neu zu starten.
+本设备带有看门狗，可以在相当于“卡死”的情况下自动重启硬件。
 
-Der Vorteil eines Watchdog ist, dass er vor allem sporadische und selten vorkommende "Hänger" beseitigt, meist ohne dass man es merkt.
+看门狗的好处是，它能消除大多数偶发的、很少出现的“卡死”，而且通常不会被察觉。
 
-Der Nachteil ist, dass damit Fehler/Probleme verschleiert und umgangen werden, die besser an die Entwickler gemeldet und von ihnen gelöst werden sollten.
+缺点是它会掩盖和绕过那些更应该反馈给开发者并由其解决的问题。
 
-Mit einem 'Ja' wird der Watchdog eingeschaltet.
+选择“是”即启用看门狗。
 

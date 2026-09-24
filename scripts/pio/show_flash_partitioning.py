@@ -144,7 +144,9 @@ def show_flash_partitioning(source, target, env):
         return size
 
     def get_knxprod_define_value(name):
-        content = open(find_header_file("knxprod.h"), 'r').read()
+        # knxprod.h 由 OpenKNXproducer 生成, 含 UTF-8 中文注释。必须显式指定编码:
+        # 否则在中文(GBK)区域的 Windows 上, Python 默认用 gbk 解码 -> UnicodeDecodeError
+        content = open(find_header_file("knxprod.h"), 'r', encoding='utf-8', errors='ignore').read()
         m = re.search("#define " + name + " ([0-9]+)", content)
         if m is None:
             return 0

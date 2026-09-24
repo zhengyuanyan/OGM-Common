@@ -1,6 +1,6 @@
-﻿### Modul aktivieren
+﻿### 启用模块
 
-Ist die Checkbox ausgewählt, ist das entsprechende Modul aktiv und dessen Parameterseite erscheint in der ETS.
+选中复选框时，相应模块处于激活状态，其参数页面会出现在 ETS 中。
 
-Wird die Checkbox ausgeschaltet, wird das Modul deaktiviert und alle Gruppenadresszuordnungen entfernt. Die eingestellten Parameter bleiben erhalten, sind aber wirkungslos, da das Modul auf dem Gerät nicht ausgeführt wird.
+取消复选框时，模块被停用，并且所有组地址关联都会被删除。已设置的参数会保留，但由于模块不会在设备上运行，所以不起作用。
 

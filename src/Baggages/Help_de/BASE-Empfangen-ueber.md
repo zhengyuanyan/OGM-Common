@@ -1,11 +1,11 @@
-﻿### Empfangen über
+﻿### 接收方式
 
-Dieses Gerät kann Uhrzeit und Datum vom Bus empfangen.
-Die Zeitinformationen können dabei auf zwei Arten entgegengenommen werden:
+本设备可以从总线接收时间和日期。
+时间信息可以用两种方式接收：
 
-* **Ein kombiniertes KO**:
-  Stellt ein kombiniertes Kommunikationsobjekt für Uhrzeit/Datum (DPT 19) bereit.
-* **Zwei getrennte KOs**:
-  Stellt je ein Kommunikationsobjekt für Uhrzeit (DPT 10) und Datum (DPT 11) bereit.
-  Nur empfohlen für KNX-Installationen mit (altem) Zeitgeber, der noch kein DPT19 liefern kann.
+* **一个组合 KO**：
+  提供时间/日期（DPT 19）的组合通信对象。
+* **两个独立的 KO**：
+  分别为时间（DPT 10）和日期（DPT 11）各提供一个通信对象。
+  仅推荐用于仍无法提供 DPT19 的（旧式）时间发送器所在的 KNX 安装。
 

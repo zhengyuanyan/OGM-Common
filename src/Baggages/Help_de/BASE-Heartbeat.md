@@ -1,9 +1,9 @@
-﻿### In Betrieb senden alle
+﻿### 周期发送“运行中”
 
-Das Gerät kann einen Status "Ich bin noch in Betrieb" über das KO 1 senden. 
-Diese Option ermöglicht das periodische Senden einer Nachricht. Dadurch kann überprüft werden, ob ein Gerät noch funktioniert und erreichbar ist.
+设备可以通过 KO 1 发送“我仍在运行”的状态。 
+该选项用于周期性地发送这条消息，由此可以检查设备是否仍在工作并且可以访问。
 
-Hier wird das Sendeintervall eingestellt.
+在这里设置发送间隔。
 
-Sollte hier eine 0 angegeben werden, wird kein "In Betrieb"-Signal gesendet und das KO 1 steht nicht zur Verfügung.
+如果这里设置为 0，则不会发送“运行中”信号，KO 1 也不可用。
 

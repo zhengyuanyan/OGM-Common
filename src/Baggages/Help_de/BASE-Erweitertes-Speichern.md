@@ -1,40 +1,40 @@
-﻿### Erweitertes Speichern
+﻿### 扩展保存
 
-Die integrierten Module können standardmäßig ihre Zustände automatisch auf dem internen Flashspeicher zwischenspeichern. Dies erfolgt beim Ausfall der Busspannung (bei TP-Geräten mit entsprechendem SAVEPIN) und bei einem Neustart des Geräts. Einige Updateskripte triggern außerdem das Speichern vor dem Aktualisieren.
+内置模块默认可以把状态自动缓存到内部 Flash 中。这发生在总线电压中断时（带相应 SAVEPIN 的 TP 设备）以及设备重启时。部分升级脚本还会在更新前触发一次保存。
 
-Bei einem Reset durch den Watchdog oder die Reset-Taste, bei einem Absturz oder bei einem Stromausfall (ohne entsprechenden SAVEPIN), kann das rechtzeitige Speichern jedoch nicht mehr durchgeführt werden. Hier bietet sich bei Bedarf an, die Daten zyklisch oder manuell (per KO) zu speichern. Folgende Punkte sind zu beachten:
+但如果重启是由看门狗或复位按钮引起的，或者发生程序崩溃、断电（没有相应的 SAVEPIN），就无法及时保存。这时如有需要，可以周期性地或手动（通过 KO）保存数据。需要注意以下几点：
 
-#### Flashspeicher
-Ein Flashspeicher unterliegt begrenzten Schreibzyklen. Ein zu häufiges Speichern führt zu einer verkürzten Lebensdauer. Die Anzahl der Schreibzyklen sind Flashspeicher abhängig. Eine pauschale Aussage zur Beständigkeit kann somit nicht getroffen werden. Allerdings kann man bei einem RP2040 davon ausgehen, dass dieser ca. 100000 Schreibzyklen verkraftet. Um den Flashspeicher zu schützen, kann man beim zyklischen Speichern maximal "Stündlich" auswählen. Unsere Empfehlung ist aber **nicht** mehr als 4x pro Tag. Beim manuellen Speichern gibt es ebenfalls einen zeitlichen Schreibschutz.
+#### Flash 存储器
+Flash 存储器有写入次数限制。保存过于频繁会缩短寿命。写入次数与 Flash 型号有关，因此无法给出统一的耐用性结论。不过对于 RP2040 可以认为大约能承受 100000 次写入。为保护 Flash，周期性保存最多只能选择“每小时”。我们的建议是每天**不要**超过 4 次。手动保存同样有时间上的写保护。
 
-#### Auswirkung beim RP2040/RP2350
+#### 在 RP2040/RP2350 上的影响
 
-Bei einem RP2040/RP2350 wird während des Schreibvorgangs die Verarbeitung pausiert.
-Während dieser Pause können KNX-Telegramme verloren gehen. Daher sollte man sich gut überlegen, ob ein zyklisches Schreiben nötig ist. Wir empfehlen diese Option nur zu verwenden, wenn dies tatsächlich nötig ist (z.B. beim Zählermodul). Alternativ ist auch das manuelle Speichern per KO möglich, so dass man dies erst bei einer Änderung auslöst. Außerdem kann man mithilfe einer Zeitschaltuhr das zyklische Schreiben in die Nacht verlegen.
+在 RP2040/RP2350 上，写入过程中处理会暂停。
+暂停期间可能会丢失 KNX 报文。因此需要认真考虑是否真的需要周期性写入。我们建议只在确实需要时（例如电表模块）才使用该选项。也可以改为通过 KO 手动保存，只在发生变化时才触发。另外还可以借助定时功能把周期性写入安排到夜间。
 
-#### Zyklisches speichern
+#### 周期保存
 
-Auswahl:
+选项：
 
-- Deaktiviert
-- Jede Stunde
-- Alle 2 Stunden
-- Alle 4 Stunden
-- Alle 6 Stunden
-- Täglich
-- Wöchentlich
+- 停用
+- 每小时
+- 每 2 小时
+- 每 4 小时
+- 每 6 小时
+- 每天
+- 每周
 
-#### Manuelles speichern
+#### 手动保存
 
-Über diese Einstellung kann ein Gruppenobjekt eingeblendet werden, über das die Speicherung über Bus Telegramm mit dem Wert 1 ausgelöst werden kann.
+通过该设置可以显示一个组对象，向它发送值为 1 的总线报文即可触发保存。
 
-Auswahl:
+选项：
 
-- Deaktiviert
-- Aktiv mit 5 min. Schreibschutz
-  Die Anzahl der Speicheroperation werden auf maximal einmal pro 5 Minuten begrenzt
-- Aktiv mit 15 min. Schreibschutz
-  Die Anzahl der Speicheroperation werden auf maximal einmal pro 15 Minuten begrenzt
-- Aktiv mit 60 min. Schreibschutz
-  Die Anzahl der Speicheroperation werden auf maximal einmal pro 60 Minuten begrenzt
+- 停用
+- 启用，5 分钟写保护
+  保存操作最多每 5 分钟执行一次
+- 启用，15 分钟写保护
+  保存操作最多每 15 分钟执行一次
+- 启用，60 分钟写保护
+  保存操作最多每 60 分钟执行一次
 

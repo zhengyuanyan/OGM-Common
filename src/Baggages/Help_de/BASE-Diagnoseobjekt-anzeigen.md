@@ -1,8 +1,8 @@
-﻿### Diagnoseobjekt anzeigen
+﻿### 显示诊断对象
 
-Man kann bei diesem Gerät ein Diagnoseobjekt (KO 7) einschalten. Dieses Diagnoseobjekt ist primär zum Debuggen vorhanden, kann aber auch einem User bei einigen Fragen weiter helfen.
+本设备可以启用一个诊断对象（KO 7）。该诊断对象主要用于调试，但也能帮助用户解决一些问题。
 
-Die Grundidee vom Diagnoseobjekt: Man sendet mit der ETS Kommandos an das KO 7 und bekommt eine entsprechende Antwort. Derzeit sind nur wenige Kommandos für die Nutzung durch den Enduser geeignet, allerdings werden im Laufe der Zeit immer weitere Kommandos hinzukommen. Die Kommandos sind von den verwendeten OpenKNX-Modulen abhängig und werden in den dortigen Applikationsbeschreibungen beschrieben.
+诊断对象的基本思路：用 ETS 向 KO 7 发送命令，并获得相应的应答。目前只有少数命令适合最终用户使用，不过今后会不断增加。命令取决于所使用的 OpenKNX 模块，并在各自的应说明中描述。
 
-Mit einem 'Ja' wird das KO 7 'Diagnoseobjekt' freigeschaltet.
+选择“是”即启用 KO 7“诊断对象”。
 

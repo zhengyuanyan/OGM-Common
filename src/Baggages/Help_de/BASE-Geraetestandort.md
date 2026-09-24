@@ -1,16 +1,16 @@
-﻿### Gerätestandort
+﻿### 设备位置
 
-Für die korrekte Berechnung der Zeit für Sonnenauf- und -untergang werden die genauen Koordinaten des Standorts benötigt sowie auch die Zeitzone und die Information, ob gerade die Sommerzeit aktiv ist.
+为了正确计算日出和日落时间，需要设备位置的精确坐标，以及时区和当前是否处于夏令时的信息。
 
-**Tipp:** Die Geo-Koordinaten können z.B. über OpenSteetMap (https://osm.org/ mit Rechtsklick / Adresse anzeigen) ermittelt werden.
+**提示：** 地理坐标可以通过 OpenStreetMap（https://osm.org/ 右键 / 显示地址）查询。
 
-Die Standard-Koordinaten stehen für Frankfurt am Main, Innenstadt.
+默认坐标对应美因河畔法兰克福市中心。
 
-### Breitengrad
+### 纬度
 
-In dem Feld wird der Breitengrad des Standortes eingegeben.
+在该字段中输入设备位置的纬度。
 
-### Längengrad
+### 经度
 
-In dem Feld wird der Längengrad des Standortes eingegeben.
+在该字段中输入设备位置的经度。
 

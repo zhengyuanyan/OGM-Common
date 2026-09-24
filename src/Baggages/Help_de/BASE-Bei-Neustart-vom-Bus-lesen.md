@@ -1,6 +1,6 @@
-﻿### Bei Neustart vom Bus lesen
+﻿### 重启时从总线读取
 
-Nach einem Neustart können Uhrzeit und Datum auch aktiv über Lesetelegramme abgefragt werden. Mit diesem Parameter wird bestimmt, ob Uhrzeit und Datum nach einem Neustart aktiv gelesen werden.
+重启后也可以通过读取报文主动查询时间和日期。该参数决定重启后是否主动读取时间和日期。
 
-Wenn dieser Parameter gesetzt ist, wird die Uhrzeit und das Datum alle 20-30 Sekunden über ein Lesetelegramm vom Bus gelesen, bis eine entsprechende Antwort kommt. Falls keine Uhr im KNX-System vorhanden ist oder die Uhr nicht auf Leseanfragen antworten kann, sollte dieser Parameter auf "Nein" gesetzt werden.
+设置该参数后，只要还没有收到应答，设备就会每 20-30 秒通过读取报文从总线读取一次时间和日期。如果 KNX 系统中没有时钟，或者时钟无法响应读取请求，则应将该参数设为“否”。
 

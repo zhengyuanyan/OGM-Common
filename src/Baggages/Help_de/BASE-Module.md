@@ -1,4 +1,4 @@
-﻿### Module
+﻿### 模块
 
-Hier wird eine Liste aller in dieser Applikation enthaltenen OpenKNX-Module und deren Version angezeigt. Standardmäßig sind alle Module aktiv. Mit der Checkbox kann man ein Modul deaktivieren. Es erscheint dann nicht mehr zur Auswahl in der ETS-Applikation und wird auf dem Gerät nicht ausgeführt.
+这里列出该应用中包含的所有 OpenKNX 模块及其版本。默认情况下所有模块都是激活的。可以用复选框停用某个模块。停用后它不再出现在 ETS 应用的可选项中，也不会在设备上运行。
 

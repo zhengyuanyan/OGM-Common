@@ -1,5 +1,5 @@
-﻿### Suspendiert
+﻿### 挂起
 
-Damit lässt sich ein einzelner Kanal vorübergehend abschalten, zum Beispiel für Testzwecke, ohne ihn komplett zu deaktivieren. Der Unterschied zum vollständigen Deaktivieren ist wichtig: Beim Deaktivieren verschwinden die Kommunikationsobjekte des Kanals aus der ETS, wodurch auch alle Gruppenadress-Verknüpfungen verloren gehen. Beim Suspendieren bleiben die Kommunikationsobjekte und ihre Verknüpfungen erhalten, der Kanal setzt seine Funktion nur vorübergehend aus. Nach dem Aufheben der Suspendierung ist der Kanal sofort wieder mit denselben Verknüpfungen einsatzbereit.
+通过该设置可以临时关闭单个通道，例如用于测试目的，而不必完全停用它。与完全停用的区别很重要：停用时通道的通信对象会从 ETS 中消失，从而丢失所有组地址关联。挂起时通信对象及其关联会保留，通道只是暂时停止工作。取消挂起后，通道立即可以按原有连接继续使用。
 
-Das ist auch bei der Fehlersuche hilfreich: Verhält sich die Anlage unerwartet, lässt sich ein bereits fertig parametrierter Kanal gezielt suspendieren, um zu prüfen, ob er die Ursache ist, ohne danach die komplette Konfiguration und Verknüpfung erneut aufbauen zu müssen.
+这在排查故障时也很有帮助：如果系统出现异常，可以针对性地挂起一个已经参数化好的通道，以检查它是否是原因，而不必事后重新建立完整的配置和关联。

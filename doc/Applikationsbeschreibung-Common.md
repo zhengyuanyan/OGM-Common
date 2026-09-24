@@ -1,339 +1,339 @@
-<!-- DOC -->
+<!-- DOC HelpContext="OpenKNX" -->
 # OpenKNX
 
-OpenKNX ist eine offene Gemeinschaft von Hobbyisten die freie und quelloffene Software für KNX-Geräte erstellen. Um eine nachhaltige und professionelle Integration ins Smarthome zu erreichen streben wir eine weitgehende Kompatibilität zum KNX-Standard an. Mit OpenKNX hast Du die Möglichkeit bereits fertige Lösungen einzusetzen, diese individuell anzupassen oder ganz neue Lösungen zu realisieren - der modulare Ansatz bietet schnelle Erfolge durch den Einsatz bewährter Softwaremodule.
+OpenKNX 是一个由爱好者组成的开放社区，致力于为 KNX 设备开发自由、开源的软件。为了实现可持续、专业的智能家居集成，我们力求尽可能兼容 KNX 标准。使用 OpenKNX，你可以直接使用已经成熟的方案，也可以按需自行调整，或者实现全新的方案——模块化的设计让你能够通过使用经过验证的软件模块快速获得成果。
 
 <!-- DOCCONTENT
-Weitere Informationen findest Du unter: www.openknx.de - wiki.openknx.de - forum.openknx.de
+更多信息请访问：www.openknx.de - wiki.openknx.de - forum.openknx.de
 DOCCONTENT -->
 
 <!-- DOCEND -->
 
-## Inhalte
+## 内容
 
-Nachfolgend werden Parameter und Kommunikationsobjekte beschrieben, die man in fast allen OpenKNX Geräten findet. 
+下面介绍几乎所有 OpenKNX 设备中都会出现的参数和通信对象。 
 
-ETS-Konfiguration **OpenKNX**: 
-- [**Allgemein**](#allgemein)
-  - [Startverzögerung](#startverzögerung)
-  - [In Betrieb senden alle](#in-betrieb-senden-alle)
-  - [Uhrzeit \& Datum](#uhrzeit--datum)
-    - [Empfangen über](#empfangen-über)
-    - [Bei Neustart vom Bus lesen](#bei-neustart-vom-bus-lesen)
-    - [Zeitzone](#zeitzone)
-    - [Sommerzeit ermitteln durch](#sommerzeit-ermitteln-durch)
-  - [Gerätestandort](#gerätestandort)
-  - [**Erweitert**](#erweitert)
-    - [Watchdog aktivieren](#watchdog-aktivieren)
-    - [Diagnoseobjekt anzeigen](#diagnoseobjekt-anzeigen)
-    - [Erweitertes "In Betrieb"](#erweitertes-in-betrieb)
-    - [Erweitertes Speichern](#erweitertes-speichern)
-  - [**Info-LEDs**](#info-leds)
-  - [**Module**](#module)
-    - [Modul aktivieren](#modul-aktivieren)
-    - [Abgleich mit dem Gerät](#abgleich-mit-dem-gerät)
-  - **Hilfe**
-- [**Kommunikationsobjekte**](#kommunikationsobjekte)
+ETS 配置 **OpenKNX**:
+- [**通用**](#通用)
+  - [启动延时](#启动延时)
+  - [周期发送“运行中”](#周期发送运行中)
+  - [时间与日期](#时间与日期)
+    - [接收方式](#接收方式)
+    - [重启时从总线读取](#重启时从总线读取)
+    - [时区](#时区)
+    - [夏令时判定方式](#夏令时判定方式)
+  - [设备位置](#设备位置)
+  - [**高级**](#高级)
+    - [启用看门狗](#启用看门狗)
+    - [显示诊断对象](#显示诊断对象)
+    - [扩展的“运行中”状态](#扩展的运行中状态)
+    - [扩展保存](#扩展保存)
+  - [**信息 LED**](#信息-led)
+  - [**模块**](#模块)
+    - [启用模块](#启用模块)
+    - [与设备对账](#与设备对账)
+  - **帮助**
+- [**通信对象**](#通信对象)
 
-## **Allgemein**
+## **通用**
 
-<kbd>![Allgemein](pics/Allgemein.png)</kbd>
+<kbd>![通用](pics/Allgemein.png)</kbd>
 
-Hier werden Einstellungen getroffen, die die generelle Arbeitsweise des Gerätes bestimmen.
+这里进行的是决定设备基本工作方式的设置。
 
-Die Seite "Allgemein" wird bei fast allen OpenKNX-Applikationen verwendet. Sie dient dazu, Einstellungen vorzunehmen, die bei allen OpenKNX-Geräten gleichermaßen benötigt werden.
+“通用”页面几乎在所有 OpenKNX 应用中都会出现，用于设置所有 OpenKNX 设备都需要的参数。
 
 <!-- DOC  HelpContext="Startup" -->
-### **Startverzögerung**
+### **启动延时**
 
-Hier kann man festlegen, wie viel Zeit vergehen soll, bis das Gerät nach einem Neustart seine Funktion aufnimmt. Dabei ist es egal, ob der Neustart durch einen Busspannungsausfall, einen Reset über den Bus, durch ein Drücken der Reset-Taste oder durch den Watchdog ausgelöst wurde.
+在这里可以设定设备重启后需要多久才开始工作。无论重启是由总线电压中断、通过总线复位、按下复位按钮还是由看门狗引起的，该设置都适用。
 
-Da das Gerät prinzipiell (sofern parametriert) auch Lesetelegramme auf den Bus senden kann, kann mit dieser Einstellung verhindert werden, dass bei einem Busneustart von vielen Geräten viele Lesetelegramme auf einmal gesendet werden und so der Bus überlastet wird.
+由于设备原则上（在已参数化的情况下）也会向总线发送读取报文，通过该设置可以避免众多设备在总线重启时同时发送大量读取报文，从而导致总线过载。
 
-**Anmerkung:** Auch wenn man hier technisch bis zu 16.000 Stunden Verzögerung angeben kann, sind nur Einstellungen im Sekundenbereich sinnvoll.
+**注意：** 虽然这里技术上最多可以设置 16000 小时的延时，但只有以秒为单位的设置才有实际意义。
 
 <!-- DOC HelpContext="Heartbeat" -->
-### **In Betrieb senden alle**
+### **周期发送“运行中”**
 
-Das Gerät kann einen Status "Ich bin noch in Betrieb" über das KO 1 senden. 
-Diese Option ermöglicht das periodische Senden einer Nachricht. Dadurch kann überprüft werden, ob ein Gerät noch funktioniert und erreichbar ist.
+设备可以通过 KO 1 发送“我仍在运行”的状态。 
+该选项用于周期性地发送这条消息，由此可以检查设备是否仍在工作并且可以访问。
 
-Hier wird das Sendeintervall eingestellt.
+在这里设置发送间隔。
 
-Sollte hier eine 0 angegeben werden, wird kein "In Betrieb"-Signal gesendet und das KO 1 steht nicht zur Verfügung.
+如果这里设置为 0，则不会发送“运行中”信号，KO 1 也不可用。
 
 <!-- DOCEND -->
-## **Uhrzeit & Datum**
+## **时间与日期**
 
-Die Einstellungen für Uhrzeit, Datum und zeitabhängige Berechnungen werden hier vorgenommen. 
+在这里进行时间、日期以及与时间相关的计算的设置。 
 
-<!-- DOC -->
-### **Empfangen über**
+<!-- DOC HelpContext="Empfangen-ueber" -->
+### **接收方式**
 
-Dieses Gerät kann Uhrzeit und Datum vom Bus empfangen.
-Die Zeitinformationen können dabei auf zwei Arten entgegengenommen werden:
+本设备可以从总线接收时间和日期。
+时间信息可以用两种方式接收：
 
-* **Ein kombiniertes KO**:
-  Stellt ein kombiniertes Kommunikationsobjekt für Uhrzeit/Datum (DPT 19) bereit.
-* **Zwei getrennte KOs**:
-  Stellt je ein Kommunikationsobjekt für Uhrzeit (DPT 10) und Datum (DPT 11) bereit.
-  Nur empfohlen für KNX-Installationen mit (altem) Zeitgeber, der noch kein DPT19 liefern kann.
+* **一个组合 KO**：
+  提供时间/日期（DPT 19）的组合通信对象。
+* **两个独立的 KO**：
+  分别为时间（DPT 10）和日期（DPT 11）各提供一个通信对象。
+  仅推荐用于仍无法提供 DPT19 的（旧式）时间发送器所在的 KNX 安装。
 
-<!-- DOC -->
-### **Bei Neustart vom Bus lesen**
+<!-- DOC HelpContext="Bei-Neustart-vom-Bus-lesen" -->
+### **重启时从总线读取**
 
-Nach einem Neustart können Uhrzeit und Datum auch aktiv über Lesetelegramme abgefragt werden. Mit diesem Parameter wird bestimmt, ob Uhrzeit und Datum nach einem Neustart aktiv gelesen werden.
+重启后也可以通过读取报文主动查询时间和日期。该参数决定重启后是否主动读取时间和日期。
 
-Wenn dieser Parameter gesetzt ist, wird die Uhrzeit und das Datum alle 20-30 Sekunden über ein Lesetelegramm vom Bus gelesen, bis eine entsprechende Antwort kommt. Falls keine Uhr im KNX-System vorhanden ist oder die Uhr nicht auf Leseanfragen antworten kann, sollte dieser Parameter auf "Nein" gesetzt werden.
+设置该参数后，只要还没有收到应答，设备就会每 20-30 秒通过读取报文从总线读取一次时间和日期。如果 KNX 系统中没有时钟，或者时钟无法响应读取请求，则应将该参数设为“否”。
 
-<!-- DOC -->
-### **Zeitzone**
+<!-- DOC HelpContext="Zeitzone" -->
+### **时区**
 
-Für die korrekte Berechnung der Zeit wird die Zeitzone des Standortes benötigt.
+为了正确计算时间，需要设备所在位置的时区。
 
-<!-- DOC -->
+<!-- DOC HelpContext="POSIX-TZ-String" -->
 #### **POSIX TZ-String**
 
 <!-- DOC Skip="2" -->
-Diese Einstellung wird angezeigt, wenn bei Zeitzone "Benutzerdefiniert" ausgwählt wurde.
+当“时区”选择了“用户自定义”时会显示该设置。
 
-**Allgemeiner Aufbau:**
+**基本结构：**
 
 `STD[+/-]hh[:mm[:ss]][DST[+/-]hh[:mm[:ss]][,Start[/Time],End[/Time]]]`
 
-**Bedeutung der einzelnen Teile:**
+**各部分含义：**
 
 - `STD`  
-  Abkürzung der Standardzeit (z. B. `CET` für Mitteleuropäische Zeit).
+  标准时间的缩写（例如 `CET`，中欧时间）。
 
 - `[+/-]hh[:mm[:ss]]`  
-  Zeitverschiebung zur UTC. Positive Werte sind westlich von Greenwich (z. B. USA), negative Werte östlich (z. B. Europa).  
-  Beispiel: `-1` für Mitteleuropa (eine Stunde östlich von UTC).
+  相对 UTC 的偏移量。正值位于格林尼治以西（例如美国），负值位于以东（例如欧洲）。  
+  例如：`-1` 表示中欧（UTC 以东 1 小时）。
 
 - `DST`  
-  Abkürzung der Sommerzeit (z. B. `CEST` für Mitteleuropäische Sommerzeit).
+  夏令时的缩写（例如 `CEST`，中欧夏令时）。
 
 - `[+/-]hh[:mm[:ss]]`  
-  (Optional) Abweichung der Sommerzeit zur Standardzeit.
+  （可选）夏令时相对标准时间的偏移。
 
 - `,Start[/Time],End[/Time]`  
-  (Optional) Regeln, wann die Sommerzeit beginnt und endet.  
-  Format: `M<m>.<w>.<d>` (Monat, Woche, Wochentag), z. B. `M3.5.0` = letzter Sonntag im März.
+  （可选）夏令时开始和结束的规则。  
+  格式：`M<m>.<w>.<d>`（月、周、星期），例如 `M3.5.0` = 三月的最后一个星期日。
 
 
-**Beispiel für Mitteleuropa (Deutschland):**
+**中欧（德国）示例：**
 
 `CET-1CEST,M3.5.0/2:00:00,M10.5.0/3:00:00`
 
-- `CET` = Standardzeit (Central European Time)
-- `-1` = 1 Stunde östlich von UTC
-- `CEST` = Sommerzeit (Central European Summer Time)
-- `M3.5.0/2:00:00` = Sommerzeit beginnt am letzten Sonntag im März um 2:00 Uhr
-- `M10.5.0/3:00:00` = Sommerzeit endet am letzten Sonntag im Oktober um 3:00 Uhr
+- `CET` = 标准时间（Central European Time）
+- `-1` = UTC 以东 1 小时
+- `CEST` = 夏令时（Central European Summer Time）
+- `M3.5.0/2:00:00` = 夏令时在三月的最后一个星期日 2:00 开始
+- `M10.5.0/3:00:00` = 夏令时在十月的最后一个星期日 3:00 结束
 
 
-**Weitere Beispiele:**
+**更多示例：**
 
-- UTC (keine Sommerzeit):  
+- UTC（无夏令时）：  
   `UTC0`
 
-- New York (USA, mit Sommerzeit):  
+- 纽约（美国，有夏令时）：  
   `EST5EDT,M3.2.0/2,M11.1.0/2`
 
-<!-- DOC -->
-### **Sommerzeit ermitteln durch**
+<!-- DOC HelpContext="Sommerzeit-ermitteln-durch" -->
+### **夏令时判定方式**
 
-Hier kann man eine der verfügbaren Möglichkeiten auswählen, mit der das Gerät ermitteln kann, ob gerade die Sommerzeit aktiv ist.
+在这里可以从可用的方式中选择一种，用于设备判断当前是否处于夏令时。
 
-#### **Kommunikationsobjekt 'Sommerzeit aktiv'**
+#### **通信对象“夏令时激活”**
 
-Wird diese Option ausgewählt, muss über das Kommunikationsobjekt 'Sommerzeit aktiv' dem Gerät mitgeteilt werden, ob gerade die Sommerzeit aktiv ist.
+选择该选项时，必须通过“夏令时激活”通信对象把当前是否处于夏令时告知设备。
 
-#### **Kombiniertem Datum/Zeit-KO (DPT 19)**
+#### **组合日期/时间 KO（DPT 19）**
 
-Erscheint nur, wenn der Datum- bzw. Zeitempfang über ein kombiniertes Datum/Zeit-KO (DPT 19) gewählt worden ist.
+只有在日期/时间通过组合日期/时间 KO（DPT 19）接收时才会出现。
 
-Wenn der Datum- bzw. Zeitempfang über ein kombiniertes Datum/Zeit-KO (DPT 19) gewählt worden ist, kann dieses Zeittelegramm auch die Information enthalten, ob gerade die Sommerzeit aktiv ist. Wenn der Zeitgeber im System diese Information mit dem DPT 19-Telegramm mitschicken kann, sollte diese Option gewählt werden.
+如果日期/时间通过组合日期/时间 KO（DPT 19）接收，则该时间报文也可以包含当前是否处于夏令时的信息。如果系统中的时间发送器能在 DPT 19 报文中一并发送该信息，建议选择此选项。
 
-#### **Interne Berechnung**
+#### **内部计算**
 
-Diese Option berechnet anhand der eingestellten Zeitzone die Sommerzeit.
+该选项根据所设置的时区计算夏令时。
 
-<!-- DOC -->
-## **Gerätestandort**
+<!-- DOC HelpContext="Geraetestandort" -->
+## **设备位置**
 
-Für die korrekte Berechnung der Zeit für Sonnenauf- und -untergang werden die genauen Koordinaten des Standorts benötigt sowie auch die Zeitzone und die Information, ob gerade die Sommerzeit aktiv ist.
+为了正确计算日出和日落时间，需要设备位置的精确坐标，以及时区和当前是否处于夏令时的信息。
 
-**Tipp:** Die Geo-Koordinaten können z.B. über OpenSteetMap (https://osm.org/ mit Rechtsklick / Adresse anzeigen) ermittelt werden.
+**提示：** 地理坐标可以通过 OpenStreetMap（https://osm.org/ 右键 / 显示地址）查询。
 
-Die Standard-Koordinaten stehen für Frankfurt am Main, Innenstadt.
+默认坐标对应美因河畔法兰克福市中心。
 
-### **Breitengrad**
+### **纬度**
 
-In dem Feld wird der Breitengrad des Standortes eingegeben.
+在该字段中输入设备位置的纬度。
 
-### **Längengrad**
+### **经度**
 
-In dem Feld wird der Längengrad des Standortes eingegeben.
+在该字段中输入设备位置的经度。
 
-## **Erweitert**
+## **高级**
 
-Im folgenden können Einstellungen vorgenommen werden, die eher für erfahrene Benutzer sind.
+下面可以进行一些更适合有经验用户的设置。
 
-<!-- DOC -->
-### **Watchdog aktivieren**
+<!-- DOC HelpContext="Watchdog-aktivieren" -->
+### **启用看门狗**
 
-Trotz hohen Qualitätsansprüchen, vielfältigen Tests und langem produktiven Einsatz kann man nie ausschließen, dass noch Fehler in der Firmware enthalten sind. Besonders ärgerlich sind Fehler, die ein Hardwaremodul zum hängen bringen und so die Funktion eingestellt wird.
+尽管有较高的质量要求、大量的测试和长期的实际使用，也永远无法完全排除固件中仍存在缺陷的可能。尤其令人头疼的是会让硬件模块卡死、从而停止工作的缺陷。
 
-Das Gerät bringt einen Watchdog mit, welcher es erlaubt, in Situationen, die einem "Hänger" entsprechen, die Hardware automatisch neu zu starten.
+本设备带有看门狗，可以在相当于“卡死”的情况下自动重启硬件。
 
-Der Vorteil eines Watchdog ist, dass er vor allem sporadische und selten vorkommende "Hänger" beseitigt, meist ohne dass man es merkt.
+看门狗的好处是，它能消除大多数偶发的、很少出现的“卡死”，而且通常不会被察觉。
 
-Der Nachteil ist, dass damit Fehler/Probleme verschleiert und umgangen werden, die besser an die Entwickler gemeldet und von ihnen gelöst werden sollten.
+缺点是它会掩盖和绕过那些更应该反馈给开发者并由其解决的问题。
 
-Mit einem 'Ja' wird der Watchdog eingeschaltet.
+选择“是”即启用看门狗。
 
-<!-- DOC -->
-### **Diagnoseobjekt anzeigen**
+<!-- DOC HelpContext="Diagnoseobjekt-anzeigen" -->
+### **显示诊断对象**
 
-Man kann bei diesem Gerät ein Diagnoseobjekt (KO 7) einschalten. Dieses Diagnoseobjekt ist primär zum Debuggen vorhanden, kann aber auch einem User bei einigen Fragen weiter helfen.
+本设备可以启用一个诊断对象（KO 7）。该诊断对象主要用于调试，但也能帮助用户解决一些问题。
 
-Die Grundidee vom Diagnoseobjekt: Man sendet mit der ETS Kommandos an das KO 7 und bekommt eine entsprechende Antwort. Derzeit sind nur wenige Kommandos für die Nutzung durch den Enduser geeignet, allerdings werden im Laufe der Zeit immer weitere Kommandos hinzukommen. Die Kommandos sind von den verwendeten OpenKNX-Modulen abhängig und werden in den dortigen Applikationsbeschreibungen beschrieben.
+诊断对象的基本思路：用 ETS 向 KO 7 发送命令，并获得相应的应答。目前只有少数命令适合最终用户使用，不过今后会不断增加。命令取决于所使用的 OpenKNX 模块，并在各自的应说明中描述。
 
-Mit einem 'Ja' wird das KO 7 'Diagnoseobjekt' freigeschaltet.
+选择“是”即启用 KO 7“诊断对象”。
 
-<!-- DOC -->
-### **Erweitertes "In Betrieb"**
+<!-- DOC HelpContext="Erweitertes-In-Betrieb" -->
+### **扩展的“运行中”状态**
 
-Der erweiterte ‚In-Betrieb‘-Modus liefert zusätzliche Informationen zum Gerätestatus.
-Statt als einzelnes Bit (DPT-1) wird der Status nun als Byte (DPT-5) übertragen.
-Der erweiterte Status wird nicht nur zyklisch, sondern auch bei Änderungen gesendet – so können Probleme wie Netzwerkfehler oder Übertemperatur sofort gemeldet werden.
-Durch eine Bitmaske lassen sich dabei verschiedene Zustandsinformationen gezielt auswerten.
+扩展的“运行中”模式提供关于设备状态的附加信息。
+状态不再以单个位（DPT-1）传输，而是以一个字节（DPT-5）传输。
+扩展状态不仅周期性发送，在发生变化时也会发送——因此网络故障或过温等问题可以立即被报告。
+通过位掩码可以有选择地评估各种状态信息。
 
-Struktur: `0b NRRR_TWSB`
+结构：`0b NRRR_TWSB`
 
-* Das Bit **B** (`1`) repräsentiert das normale Signal "In Betrieb" (immer aktiv).
-* Das Bit **S** (`2`) signalisiert den Startvorgang und wird einmalig nach Ablauf der Startverzögerung übermittelt.
-* Das Bit **W** (`4`) signalisiert einen durch den Watchdog ausgelösten Neustart und wird nur in Verbindung mit dem **S**-Bit einmalig gesendet.
-* Das Bit **T** (`8`) zeigt einen Übertemperaturalarm der BCU an.
-* Das Bit **R** (`16`) ist für zukünftige Anwendungen reserviert.
-* Das Bit **R** (`32`) ist für zukünftige Anwendungen reserviert.
-* Das Bit **R** (`64`) ist für zukünftige Anwendungen reserviert.
-* Das Bit **N** (`128`) zeigt an, ob eine Netzwerkverbindung besteht.
+* 位 **B**（`1`）表示普通的“运行中”信号（始终有效）。
+* 位 **S**（`2`）表示启动过程，在启动延时结束后发送一次。
+* 位 **W**（`4`）表示由看门狗引起的重启，仅在同时发送 **S** 位时发送一次。
+* 位 **T**（`8`）表示 BCU 的过温报警。
+* 位 **R**（`16`）预留给将来的用途。
+* 位 **R**（`32`）预留给将来的用途。
+* 位 **R**（`64`）预留给将来的用途。
+* 位 **N**（`128`）表示是否存在网络连接。
 
-**Hinweis:** Wenn eine neue Firmware auf das Gerät übertragen wird, kommt es in manchen Fällen dazu, dass das Flag für den "Neustart durch den Watchdog" gesetzt wurde.
+**注意：** 在向设备传输新固件时，某些情况下会出现“由看门狗引起重启”的标志被置位的情况。
 
-**Tipp:** Bei Bedarf kann das Logikmodul daraus einzelne 1-Bit-KOs erzeugen. Ein entsprechendes Beispiel lässt sich über den Konfigurationstransfer importieren und anschließend über Eingang 2 anpassen.
+**提示：** 如有需要，可以用逻辑模块从中生成单独的 1 位 KO。相应的示例可以通过配置传输导入，然后通过输入 2 进行调整。
 
 ```
 OpenKNX,cv1,*/LOG/*§f~Name=Bit%20aus%20erweitertem%20Betrieb%20ausmakieren§f~Logic=1§f~Calculate=1§f~Trigger=1§f~TriggerE1=1§f~NameInput1=Erweiterter%20Betriebsstatus§f~E1=1§f~E1Dpt=2§f~E1OtherKO:2=1§f~E1UseOtherKO=1§f~E1LowDpt5:1=0§f~NameInput2=Bitmaske%20(dezimal)§f~E2ConvertInt=5§f~E2=1§f~E2Dpt=2§f~E2LowDpt5Fix=128§f~NameOutput=ausmaskiertes%20Bit§f~OOn=8§f~OOnAll=8§f~OOnFunction=9§>Wert für Eingang 2 passend setzen!§;OpenKNX
 ```
 
-<!-- DOC -->
-### Erweitertes Speichern
+<!-- DOC HelpContext="Erweitertes-Speichern" -->
+### 扩展保存
 
-Die integrierten Module können standardmäßig ihre Zustände automatisch auf dem internen Flashspeicher zwischenspeichern. Dies erfolgt beim Ausfall der Busspannung (bei TP-Geräten mit entsprechendem SAVEPIN) und bei einem Neustart des Geräts. Einige Updateskripte triggern außerdem das Speichern vor dem Aktualisieren.
+内置模块默认可以把状态自动缓存到内部 Flash 中。这发生在总线电压中断时（带相应 SAVEPIN 的 TP 设备）以及设备重启时。部分升级脚本还会在更新前触发一次保存。
 
-Bei einem Reset durch den Watchdog oder die Reset-Taste, bei einem Absturz oder bei einem Stromausfall (ohne entsprechenden SAVEPIN), kann das rechtzeitige Speichern jedoch nicht mehr durchgeführt werden. Hier bietet sich bei Bedarf an, die Daten zyklisch oder manuell (per KO) zu speichern. Folgende Punkte sind zu beachten:
+但如果重启是由看门狗或复位按钮引起的，或者发生程序崩溃、断电（没有相应的 SAVEPIN），就无法及时保存。这时如有需要，可以周期性地或手动（通过 KO）保存数据。需要注意以下几点：
 
-#### Flashspeicher
-Ein Flashspeicher unterliegt begrenzten Schreibzyklen. Ein zu häufiges Speichern führt zu einer verkürzten Lebensdauer. Die Anzahl der Schreibzyklen sind Flashspeicher abhängig. Eine pauschale Aussage zur Beständigkeit kann somit nicht getroffen werden. Allerdings kann man bei einem RP2040 davon ausgehen, dass dieser ca. 100000 Schreibzyklen verkraftet. Um den Flashspeicher zu schützen, kann man beim zyklischen Speichern maximal "Stündlich" auswählen. Unsere Empfehlung ist aber **nicht** mehr als 4x pro Tag. Beim manuellen Speichern gibt es ebenfalls einen zeitlichen Schreibschutz.
+#### Flash 存储器
+Flash 存储器有写入次数限制。保存过于频繁会缩短寿命。写入次数与 Flash 型号有关，因此无法给出统一的耐用性结论。不过对于 RP2040 可以认为大约能承受 100000 次写入。为保护 Flash，周期性保存最多只能选择“每小时”。我们的建议是每天**不要**超过 4 次。手动保存同样有时间上的写保护。
 
-#### Auswirkung beim RP2040/RP2350
+#### 在 RP2040/RP2350 上的影响
 
-Bei einem RP2040/RP2350 wird während des Schreibvorgangs die Verarbeitung pausiert.
-Während dieser Pause können KNX-Telegramme verloren gehen. Daher sollte man sich gut überlegen, ob ein zyklisches Schreiben nötig ist. Wir empfehlen diese Option nur zu verwenden, wenn dies tatsächlich nötig ist (z.B. beim Zählermodul). Alternativ ist auch das manuelle Speichern per KO möglich, so dass man dies erst bei einer Änderung auslöst. Außerdem kann man mithilfe einer Zeitschaltuhr das zyklische Schreiben in die Nacht verlegen.
+在 RP2040/RP2350 上，写入过程中处理会暂停。
+暂停期间可能会丢失 KNX 报文。因此需要认真考虑是否真的需要周期性写入。我们建议只在确实需要时（例如电表模块）才使用该选项。也可以改为通过 KO 手动保存，只在发生变化时才触发。另外还可以借助定时功能把周期性写入安排到夜间。
 
-#### Zyklisches speichern
-
-<!-- DOC Skip="2" -->
-Diese Option wird eingeblendet, wenn "Erweitertes Speichern" auf "Ja" gestellt ist.
-
-Auswahl:
-
-- Deaktiviert
-- Jede Stunde
-- Alle 2 Stunden
-- Alle 4 Stunden
-- Alle 6 Stunden
-- Täglich
-- Wöchentlich
-
-#### Manuelles speichern
+#### 周期保存
 
 <!-- DOC Skip="2" -->
-Diese Option wird eingeblendet, wenn "Erweitertes Speichern" auf "Ja" gestellt ist.
+当“扩展保存”设为“是”时会显示该选项。
 
-Über diese Einstellung kann ein Gruppenobjekt eingeblendet werden, über das die Speicherung über Bus Telegramm mit dem Wert 1 ausgelöst werden kann.
+选项：
 
-Auswahl:
+- 停用
+- 每小时
+- 每 2 小时
+- 每 4 小时
+- 每 6 小时
+- 每天
+- 每周
 
-- Deaktiviert
-- Aktiv mit 5 min. Schreibschutz
-  Die Anzahl der Speicheroperation werden auf maximal einmal pro 5 Minuten begrenzt
-- Aktiv mit 15 min. Schreibschutz
-  Die Anzahl der Speicheroperation werden auf maximal einmal pro 15 Minuten begrenzt
-- Aktiv mit 60 min. Schreibschutz
-  Die Anzahl der Speicheroperation werden auf maximal einmal pro 60 Minuten begrenzt
+#### 手动保存
 
-<!-- DOC -->
-## **Info-LEDs**
+<!-- DOC Skip="2" -->
+当“扩展保存”设为“是”时会显示该选项。
 
-Auf dieser Seite können die Info-LEDs angepasst werden. In der Regel ist bereits eine geräteabhängige Vorbelegung der LEDs vorhanden. Dies bedeutet jedoch nicht, dass jeder Info-LED bereits eine Funktion zugewiesen ist.
+通过该设置可以显示一个组对象，向它发送值为 1 的总线报文即可触发保存。
 
-Diese Vorbelegung kann – sofern vorhanden – bei Bedarf angepasst werden. Da viele Produktdatenbanken geräteunabhängig aufgebaut sind, können unter Umständen mehr LEDs zur Auswahl stehen, als das verwendete Gerät tatsächlich bietet. In diesem Fall bleibt die entsprechende Zuordnung ohne Funktion.
+选项：
 
-Eine Beschreibung der LED-Funktionen ist im Wiki unter http://go.openknx.de/statusled zu finden.
+- 停用
+- 启用，5 分钟写保护
+  保存操作最多每 5 分钟执行一次
+- 启用，15 分钟写保护
+  保存操作最多每 15 分钟执行一次
+- 启用，60 分钟写保护
+  保存操作最多每 60 分钟执行一次
 
-**Hinweis**: Die Nummerierung der Info-LEDs entspricht nicht immer der Beschriftung auf der Gerätefront. Bei OpenKNX-REG1-Geräten z. B. beginnen die LEDs technisch von unten mit der Prog-LED, gefolgt von Info-LED 1 bis 3. Je nach verwendeter Front erfolgt die Beschriftung jedoch von oben mit Info 1, Info 2, Func und Prog-LED. Info 1 entspricht somit in Wirklichkeit der Info-LED 3, während Func in Wirklichkeit der Info-LED 1 entspricht.
+<!-- DOC HelpContext="Info-LEDs" -->
+## **信息 LED**
 
-<!-- DOC -->
-## **Module**
+在该页面上可以调整信息 LED。通常设备已经有一份与设备型号相关的 LED 预配置。但这并不意味着每个信息 LED 都已分配了功能。
 
-Hier wird eine Liste aller in dieser Applikation enthaltenen OpenKNX-Module und deren Version angezeigt. Standardmäßig sind alle Module aktiv. Mit der Checkbox kann man ein Modul deaktivieren. Es erscheint dann nicht mehr zur Auswahl in der ETS-Applikation und wird auf dem Gerät nicht ausgeführt.
+这份预配置（如果存在）可以按需调整。由于许多产品数据库是与设备无关的，可选 LED 数量可能多于所用设备实际提供的数量。在这种情况下，相应的分配不起作用。
 
-<!-- DOC -->
-### **Modul aktivieren**
+LED 功能的说明可以在 Wiki 上找到：http://go.openknx.de/statusled
 
-Ist die Checkbox ausgewählt, ist das entsprechende Modul aktiv und dessen Parameterseite erscheint in der ETS.
+**注意**：信息 LED 的编号并不总是与设备面板上的标注一致。例如在 OpenKNX-REG1 设备上，LED 从下往上依次是 Prog-LED、信息 LED 1 至 3。而根据所用面板的不同，标注方式是从上往下为 Info 1、Info 2、Func 和 Prog-LED。因此 Info 1 实际上是信息 LED 3，而 Func 实际上是信息 LED 1。
 
-Wird die Checkbox ausgeschaltet, wird das Modul deaktiviert und alle Gruppenadresszuordnungen entfernt. Die eingestellten Parameter bleiben erhalten, sind aber wirkungslos, da das Modul auf dem Gerät nicht ausgeführt wird.
+<!-- DOC HelpContext="Module" -->
+## **模块**
 
-### **Abgleich mit dem Gerät**
+这里列出该应用中包含的所有 OpenKNX 模块及其版本。默认情况下所有模块都是激活的。可以用复选框停用某个模块。停用后它不再出现在 ETS 应用的可选项中，也不会在设备上运行。
 
-Die vorliegende ETS-Applikation ist generisch gehalten und läuft auf viel unterschiedlicher Hardware. Dadurch kann es passieren, dass in der Applikation Module angezeigt werden, die mit der gegebenen Hardware keine Funktion haben. 
+<!-- DOC HelpContext="Modul-aktivieren" -->
+### **启用模块**
 
->Beispiel: Wenn die Hardware keine Binäreingänge hat, dann kann man noch so viele Einstellungen zu Binäreingängen in der ETS machen, es wird nicht funktionieren. 
+选中复选框时，相应模块处于激活状态，其参数页面会出现在 ETS 中。
 
-Mit Hilfe der beiden Schaltflächen auf dieser Seite kann man die Liste der vorhandenen Module in der ETS-Applikation mit der Liste der funktionierenden Module der angeschlossenen Hardware abgleichen.
+取消复选框时，模块被停用，并且所有组地址关联都会被删除。已设置的参数会保留，但由于模块不会在设备上运行，所以不起作用。
 
->Wichtig: Die Schaltflächen funktionieren nur, wenn das Gerät angeschlossen und mit der Applikation programmiert ist.
+### **与设备对账**
 
-Es stehen 2 Schaltflächen zur Verfügung:
+本 ETS 应用是通用设计的，可以运行在多种不同的硬件上。因此应用中可能会显示在当前硬件上没有任何功能的模块。 
 
-#### **Nicht unterstützte Module ausblenden**
+>示例：如果硬件没有二进制输入，那么在 ETS 中做再多的二进制输入设置也不会起作用。 
 
-Das Gerät wird nach den Modulen gefragt, die es nicht unterstützt. Diese werden ausgeblendet. Falls der Benutzer vorher schon Module manuell ausgeblendet hat, wird diese Auswahl nicht verändert.
+借助本页面上的两个按钮，可以把 ETS 应用中现有的模块列表与所连接硬件实际支持的模块列表进行对账。
 
-Mit dieser Funktion werden Module nur ausgeblendet, nicht eingeblendet.
+>重要：只有在设备已连接并且已下载应用的情况下，这些按钮才能工作。
 
-#### **Komplettabgleich aller Module**
+有 2 个按钮可用：
 
-Das Gerät wird für jedes Modul gefragt, ob es dieses Modul unterstützt. Die vom Gerät unterstützten Module werden eingeblendet, die nicht unterstützten ausgeblendet. Eine vom Benutzer vorher getroffene Auswahl wird überschrieben.
+#### **隐藏不支持的模块**
+
+向设备查询它不支持的模块，并将这些模块隐藏。如果用户之前已手动隐藏过某些模块，这些选择不会被改变。
+
+该功能只会隐藏模块，不会显示模块。
+
+#### **全部模块完全对账**
+
+逐个向设备查询每个模块是否受支持。设备支持的模块会被显示，不支持的则被隐藏。用户之前所做的选择会被覆盖。
 
 
-## Kommunikationsobjekte
+## 通信对象
 
-| KO |    DPT | Bezeichnung                  | Erklärung                                                                                                                                                                                                           |
-|---:|-------:|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|  1 |  1.011 | In Betrieb                   | (bei [Erweitertes "In Betrieb"](#erweitertes-in-betrieb) *= Nein*) Sendet eine 1 im unter [In Betrieb senden alle](#in-betrieb-senden-alle) eingestellten Zyklus                                                    |
-|  1 |  5.005 | In Betrieb                   | (bei [Erweitertes "In Betrieb"](#erweitertes-in-betrieb) *= Ja*) Sendet eine [Kombination von Status-Bits](#erweitertes-in-betrieb) im unter [In Betrieb senden alle](#in-betrieb-senden-alle) eingestellten Zyklus |
-|  2 | 10.001 | Uhrzeit                      | (nur bei [Empfang Uhrzeit & Datum über](#empfangen-über) zwei getrennte KOs) Nimmt die aktuelle Uhrzeit/Tageszeit entgegen                                                                                          |
-|  3 | 11.001 | Datum                        | (nur bei [Empfang Uhrzeit & Datum über](#empfangen-über) zwei getrennte KOs) Nimmt den aktuellen Tag entgegen                                                                                                       |
-|  4 | 19.001 | Uhrzeit/Datum                | (nur bei [Empfang Uhrzeit & Datum über](#empfangen-über) ein kombiniertes KO) Nimmt die aktuelle Zeit entgegen                                                                                                      |
-|  5 |  1.001 | Sommerzeit aktiv             | (optional, mit [Kommunikationsobjekt 'Sommerzeit aktiv'](#kommunikationsobjekt-sommerzeit-aktiv))                                                                                                                   |
-|  6 |  1.017 | speichern                    | (optional, bei [Manuelles Speichern](#manuelles-speichern)) Löst eine sofortige Speicheroperation aus, sofern innerhalb des eingestellen Schreibschutzzeitraums noch keine erfolgt ist.                             |
-|  7 | 16.001 | Diagnose                     | (optional, bei [Diagnoseobjekt anzeigen](#diagnoseobjekt-anzeigen)) Erlaubt den gezielten Abruf von Diagnose-Information, über Modul-spezifische Kommandos                                                          |
+| KO |    DPT | 名称                        | 说明                                                                                   |
+|---:|-------:|-----------------------------|----------------------------------------------------------------------------------------|
+|  1 |  1.011 | 运行中                      | （当 [扩展的“运行中”状态](#扩展的运行中状态) = *否* 时）在 [周期发送“运行中”](#周期发送运行中) 设置的周期内发送 1 |
+|  1 |  5.005 | 运行中                      | （当 [扩展的“运行中”状态](#扩展的运行中状态) = *是* 时）在 [周期发送“运行中”](#周期发送运行中) 设置的周期内发送[状态位的组合](#扩展的运行中状态) |
+|  2 | 10.001 | 时间                        | （仅在[时间与日期接收方式](#接收方式)为两个独立 KO 时）接收当前时间/时刻                |
+|  3 | 11.001 | 日期                        | （仅在[时间与日期接收方式](#接收方式)为两个独立 KO 时）接收当前日期的天数                |
+|  4 | 19.001 | 时间/日期                   | （仅在[时间与日期接收方式](#接收方式)为一个组合 KO 时）接收当前时间                     |
+|  5 |  1.001 | 夏令时激活                  | （可选，使用[通信对象“夏令时激活”](#通信对象夏令时激活)时）                              |
+|  6 |  1.017 | 保存                        | （可选，在[手动保存](#手动保存)时）如果仍处于所设置的写保护时间段内且尚未保存，则立即触发一次保存操作。 |
+|  7 | 16.001 | 诊断                        | （可选，在[显示诊断对象](#显示诊断对象)时）允许通过模块专用命令有针对性地读取诊断信息      |
 <!-- TODO add time output configuration? -->
 <!-- in LogikModul
 | 15 |  1.    | Urlaub                       |                                                                                                                                                                                                                     |

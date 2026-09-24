@@ -1,10 +1,10 @@
-﻿### Info-LEDs
+﻿### 信息 LED
 
-Auf dieser Seite können die Info-LEDs angepasst werden. In der Regel ist bereits eine geräteabhängige Vorbelegung der LEDs vorhanden. Dies bedeutet jedoch nicht, dass jeder Info-LED bereits eine Funktion zugewiesen ist.
+在该页面上可以调整信息 LED。通常设备已经有一份与设备型号相关的 LED 预配置。但这并不意味着每个信息 LED 都已分配了功能。
 
-Diese Vorbelegung kann – sofern vorhanden – bei Bedarf angepasst werden. Da viele Produktdatenbanken geräteunabhängig aufgebaut sind, können unter Umständen mehr LEDs zur Auswahl stehen, als das verwendete Gerät tatsächlich bietet. In diesem Fall bleibt die entsprechende Zuordnung ohne Funktion.
+这份预配置（如果存在）可以按需调整。由于许多产品数据库是与设备无关的，可选 LED 数量可能多于所用设备实际提供的数量。在这种情况下，相应的分配不起作用。
 
-Eine Beschreibung der LED-Funktionen ist im Wiki unter http://go.openknx.de/statusled zu finden.
+LED 功能的说明可以在 Wiki 上找到：http://go.openknx.de/statusled
 
-**Hinweis**: Die Nummerierung der Info-LEDs entspricht nicht immer der Beschriftung auf der Gerätefront. Bei OpenKNX-REG1-Geräten z. B. beginnen die LEDs technisch von unten mit der Prog-LED, gefolgt von Info-LED 1 bis 3. Je nach verwendeter Front erfolgt die Beschriftung jedoch von oben mit Info 1, Info 2, Func und Prog-LED. Info 1 entspricht somit in Wirklichkeit der Info-LED 3, während Func in Wirklichkeit der Info-LED 1 entspricht.
+**注意**：信息 LED 的编号并不总是与设备面板上的标注一致。例如在 OpenKNX-REG1 设备上，LED 从下往上依次是 Prog-LED、信息 LED 1 至 3。而根据所用面板的不同，标注方式是从上往下为 Info 1、Info 2、Func 和 Prog-LED。因此 Info 1 实际上是信息 LED 3，而 Func 实际上是信息 LED 1。
 

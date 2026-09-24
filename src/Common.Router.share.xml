@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-model href="../../../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <KNX xmlns:op="http://github.com/OpenKNX/OpenKNXproducer" xmlns="http://knx.org/xml/project/20" CreatedBy="KNX MT" ToolVersion="5.1.255.16695">
-  <!-- This is a special include File for Applications that do not allow Group objects like a Router. In this file, only parts that differ from Common.share.xml are specified. For the other parts, use the Common.share.xml -->
+  <!-- 这是给不允许组对象（如路由器）的应用使用的专用包含文件。本文件只定义与 Common.share.xml 不同的部分，其余部分请使用 Common.share.xml -->
   <op:minOpenKNXproducerVersion value="4.3.5" />
 
   <op:config name="%BASE_Info1LedLabel%" value=""></op:config>
@@ -26,15 +26,15 @@
           <op:part name="InfoLed" href="InfoLed.part.xml" instances="1"></op:part>
           <Static>
             <ParameterTypes>
-              <!-- PT are used from Common.share.xml only -->
+              <!-- ParameterType 只在 Common.share.xml 中定义 -->
             </ParameterTypes>
             <Parameters>
               <Parameter Id="%AID%_P-%TT%00001" Name="ETS" ParameterType="%AID%_PT-ETS" Text="ETS" Access="Read" Value="" />
 
-              <!-- Helper with 0 An auxiliary parameter that is always 0 to make a check against it -->
+              <!-- 辅助参数 0：始终为 0 的辅助参数，用于比较判断 -->
               <Parameter Id="%AID%_P-%TT%00099" Name="SelectHelper" ParameterType="%AID%_PT-CheckBox" Text="" Value="0" Access="None"/>
 
-              <!-- Info LED -->
+              <!-- 信息 LED -->
               <Parameter Id="%AID%_P-%TT%00040" Name="Info1LedFuncNotice" ParameterType="%AID%_PT-Text80Byte" Text="" Value="" />
               <Parameter Id="%AID%_P-%TT%00041" Name="Info2LedFuncNotice" ParameterType="%AID%_PT-Text80Byte" Text="" Value="" />
               <Parameter Id="%AID%_P-%TT%00042" Name="Info3LedFuncNotice" ParameterType="%AID%_PT-Text80Byte" Text="" Value="" />
@@ -42,30 +42,30 @@
 
               <Union SizeInBit="32">
                 <Memory CodeSegment="%MID%" Offset="0" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%TT%00002" Name="StartupDelayBase"   ParameterType="%AID%_PT-DelayBase"        Offset="0" BitOffset="0" Text="Zeitbasis" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%00003" Name="StartupDelayTime"   ParameterType="%AID%_PT-DelayTimeMin1"    Offset="0" BitOffset="2" Text="Zeit" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00002" Name="StartupDelayBase"   ParameterType="%AID%_PT-DelayBase"        Offset="0" BitOffset="0" Text="时间基准" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00003" Name="StartupDelayTime"   ParameterType="%AID%_PT-DelayTimeMin1"    Offset="0" BitOffset="2" Text="时间" Value="1" />
               </Union>
               <Union SizeInBit="16">
                 <Memory CodeSegment="%MID%" Offset="4" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%TT%00147" Name="Watchdog"           ParameterType="%AID%_PT-OnOffYesNo"       Offset="1" BitOffset="1" Text="Watchdog aktivieren" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00147" Name="Watchdog"           ParameterType="%AID%_PT-OnOffYesNo"       Offset="1" BitOffset="1" Text="启用看门狗" Value="1" />
               </Union>
               <Union SizeInBit="56">
                 <Memory CodeSegment="%MID%" Offset="6" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%TT%00020" Name="Info1LedFunc"      ParameterType="%AID%_PT-SLEDFunc"     Offset="0" BitOffset="0" Text="Info1%BASE_Info1LedLabel%" Value="%BASE_Info1LedFunc%" Access="%BASE_Info1LedFunc_Access%"/>
-                <Parameter Id="%AID%_UP-%TT%00021" Name="Info2LedFunc"      ParameterType="%AID%_PT-SLEDFunc"     Offset="2" BitOffset="0" Text="Info2%BASE_Info2LedLabel%" Value="%BASE_Info2LedFunc%" Access="%BASE_Info2LedFunc_Access%"/>
-                <Parameter Id="%AID%_UP-%TT%00022" Name="Info3LedFunc"      ParameterType="%AID%_PT-SLEDFunc"     Offset="4" BitOffset="0" Text="Info3%BASE_Info3LedLabel%" Value="%BASE_Info3LedFunc%" Access="%BASE_Info3LedFunc_Access%"/>
+                <Parameter Id="%AID%_UP-%TT%00020" Name="Info1LedFunc"      ParameterType="%AID%_PT-SLEDFunc"     Offset="0" BitOffset="0" Text="信息 1%BASE_Info1LedLabel%" Value="%BASE_Info1LedFunc%" Access="%BASE_Info1LedFunc_Access%"/>
+                <Parameter Id="%AID%_UP-%TT%00021" Name="Info2LedFunc"      ParameterType="%AID%_PT-SLEDFunc"     Offset="2" BitOffset="0" Text="信息 2%BASE_Info2LedLabel%" Value="%BASE_Info2LedFunc%" Access="%BASE_Info2LedFunc_Access%"/>
+                <Parameter Id="%AID%_UP-%TT%00022" Name="Info3LedFunc"      ParameterType="%AID%_PT-SLEDFunc"     Offset="4" BitOffset="0" Text="信息 3%BASE_Info3LedLabel%" Value="%BASE_Info3LedFunc%" Access="%BASE_Info3LedFunc_Access%"/>
                 <Parameter Id="%AID%_UP-%TT%00029" Name="DefaultLedFunc"    ParameterType="%AID%_PT-CheckBox"     Offset="6" BitOffset="0" Text="" Value="0"/>
               </Union>
 
-              <!-- Time & Date -->
+              <!-- 时间与日期 -->
               <Union SizeInBit="520">
                 <Memory CodeSegment="%MID%" Offset="13" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%TT%00144" Name="Timezone"         ParameterType="%AID%_PT-Timezone"         Offset="0" BitOffset="0" Text="Zeitzone" Value="1" />
-                <Parameter Id="%AID%_UP-%TT%00156" Name="CombinedTimeDate" ParameterType="%AID%_PT-CombinedTimeDate" Offset="0" BitOffset="5" Text="Empfangen über" Value="1" />
-                <Parameter Id="%AID%_UP-%TT%00159" Name="SummertimeAll"    ParameterType="%AID%_PT-SummertimeAll"    Offset="0" BitOffset="6" Text="Sommerzeit ermitteln durch" Value="2" />
-                <Parameter Id="%AID%_UP-%TT%00006" Name="InternalTime"     ParameterType="%AID%_PT-OnOffYesNo"       Offset="0" BitOffset="7" Text="InternalTime" Access="None" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00144" Name="Timezone"         ParameterType="%AID%_PT-Timezone"         Offset="0" BitOffset="0" Text="时区" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00156" Name="CombinedTimeDate" ParameterType="%AID%_PT-CombinedTimeDate" Offset="0" BitOffset="5" Text="接收方式" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00159" Name="SummertimeAll"    ParameterType="%AID%_PT-SummertimeAll"    Offset="0" BitOffset="6" Text="夏令时判定方式" Value="2" />
+                <Parameter Id="%AID%_UP-%TT%00006" Name="InternalTime"     ParameterType="%AID%_PT-OnOffYesNo"       Offset="0" BitOffset="7" Text="内部时间" Access="None" Value="0" />
                 <Parameter Id="%AID%_UP-%TT%00175" Name="TimezoneCustom"   ParameterType="%AID%_PT-TimezoneCustom"   Offset="1" BitOffset="0" Text="POSIX TZ-String" Value="CET-1CEST,M3.5.0/2:00:00,M10.5.0/3:00:00" />
-                <!-- ^^^ 63 Characters + 0 terminator = 64 bytes ^^^ -->
+                <!-- ^^^ 63 个字符 + 0 结束符 = 64 字节 ^^^ -->
               </Union>
             </Parameters>
             <ParameterRefs>
@@ -90,13 +90,13 @@
           <Dynamic>
             <Channel Id="%AID%_CH-%PREFIX%" Number="%PREFIX%" Name="Main" Text="OpenKNX" Icon="openknx" HelpContext="BASE-OpenKNX">
 
-              <ParameterBlock Id="%AID%_PB-nnn" Name="Basic" Text="Allgemein" Icon="cog-outline" HelpContext="BASE-OpenKNX">
-                <!-- Hidden -->
+              <ParameterBlock Id="%AID%_PB-nnn" Name="Basic" Text="通用" Icon="cog-outline" HelpContext="BASE-OpenKNX">
+                <!-- 隐藏 -->
                 <ParameterRefRef RefId="%AID%_UP-%TT%00006_R-%TT%0000601" />
                 <ParameterRefRef RefId="%AID%_P-%TT%00099_R-%TT%0009901" />
 
-                <ParameterSeparator Id="%AID%_PS-nnn" Text="Allgemein" UIHint="Headline" />
-                <!-- Startup Delay pattern -->
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="通用" UIHint="Headline" />
+                <!-- 启动延时模式 -->
                 <ParameterBlock Id="%AID%_PB-nnn" Name="StartupDelayCycle" Inline="true" Layout="Grid" HelpContext="BASE-Startup">
                   <Rows>
                     <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
@@ -106,13 +106,13 @@
                     <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="15%" />
                     <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="20%" />
                   </Columns>
-                  <ParameterSeparator Id="%AID%_PS-nnn" Text="  Startverzögerung" Cell="1,1" />
+                  <ParameterSeparator Id="%AID%_PS-nnn" Text="  启动延时" Cell="1,1" />
                   <ParameterRefRef RefId="%AID%_UP-%TT%00003_R-%TT%0000301" Cell="1,2" IndentLevel="1" />
                   <ParameterRefRef RefId="%AID%_UP-%TT%00002_R-%TT%0000201" Cell="1,3" IndentLevel="1" />
                 </ParameterBlock>
 
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
-                <ParameterSeparator Id="%AID%_PS-nnn" Text="Uhrzeit &amp; Datum" UIHint="Headline" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="时间与日期" UIHint="Headline" />
                 <ParameterRefRef RefId="%AID%_UP-%TT%00144_R-%TT%0014401" HelpContext="Empty" IndentLevel="1" />
                 
 
@@ -129,28 +129,28 @@
                 </ParameterBlock>
 
               </ParameterBlock>
-              <ParameterBlock Id="%AID%_PB-nnn" Name="Extended" Text="Erweitert" Icon="format-list-text" HelpContext="BASE-OpenKNX">
-                <ParameterSeparator Id="%AID%_PS-nnn" Text="Erweitert" UIHint="Headline" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00147_R-%TT%0014701" HelpContext="%DOC%" IndentLevel="1" />
+              <ParameterBlock Id="%AID%_PB-nnn" Name="Extended" Text="高级" Icon="format-list-text" HelpContext="BASE-OpenKNX">
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="高级" UIHint="Headline" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00147_R-%TT%0014701" HelpContext="BASE-Watchdog-aktivieren" IndentLevel="1" />
               </ParameterBlock>
 
               <op:usePart name="InfoLed" xpath="//Dynamic/ChannelIndependentBlock/*" />
 
-              <ParameterBlock Id="%AID%_PB-nnn" Name="Docu" Text="Hilfe" Icon="help-circle-outline" HelpContext="BASE-OpenKNX">
+              <ParameterBlock Id="%AID%_PB-nnn" Name="Docu" Text="帮助" Icon="help-circle-outline" HelpContext="BASE-OpenKNX">
 						
-              	<ParameterSeparator Id="%AID%_PS-nnn" Text="Dokumentation" UIHint="Headline" />
-								<ParameterSeparator Id="%AID%_PS-nnn" Text="Die Dokumentation ist als Kontextsensitive Hilfe verfügbar, siehe den Text im unteren Bereich des Bildschirms." />
-								<ParameterSeparator Id="%AID%_PS-nnn" Text="Wird keine Dokumentation angezeigt, muss diese in der ETS Werkzeugleiste über die Schaltfläche&#10;'(?) Kontexhilfe' aktiviert werden." />
+              	<ParameterSeparator Id="%AID%_PS-nnn" Text="文档" UIHint="Headline" />
+								<ParameterSeparator Id="%AID%_PS-nnn" Text="文档以上下文相关帮助的形式提供，参见屏幕下部的文字。" />
+								<ParameterSeparator Id="%AID%_PS-nnn" Text="如果没有显示文档，需要在 ETS 工具栏中通过&#10;“(?) 上下文帮助”按钮启用。" />
 								<ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
 	
-                <ParameterSeparator Id="%AID%_PS-nnn" Text="ETS Tipp" UIHint="Headline" />
-                <ParameterSeparator Id="%AID%_PS-nnn" Text="Benötigen mehrere Kanäle die gleiche Konfigurationen, können mit gedrückter STRG Taste die jeweils gleichen Seiten mit der Maus ausgewählt werden."  />
-								<ParameterSeparator Id="%AID%_PS-nnn" Text="Die vorgenommen Konfigurationen werden dann auf alle gewählten Kanäle übernommen."  />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="ETS 小提示" UIHint="Headline" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="如果多个通道需要相同的配置，可以按住 STRG 键用鼠标同时选中各自的相同页面。"  />
+								<ParameterSeparator Id="%AID%_PS-nnn" Text="所做的配置会应用到所有选中的通道。"  />
 	              <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
 	
-                <ParameterSeparator Id="%AID%_PS-nnn" Text="Verwendung von Open Source" UIHint="Headline" />
-                <ParameterSeparator Id="%AID%_PS-nnn" Text="OpenKNX verwendet für die Sonnenstandsberechnung den PSA Algorithmus welcher unter der CC BY 4.0 Lizenz veröffentlich wurde."  />
-								<ParameterSeparator Id="%AID%_PS-nnn" Text="Mehr Information dazu sind unter https://www.sciencedirect.com/science/article/pii/S0038092X20311488?via%3Dihub zu finden."  />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="开源软件的使用" UIHint="Headline" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="OpenKNX 使用 PSA 算法进行太阳位置计算，该算法以 CC BY 4.0 许可证发布。"  />
+								<ParameterSeparator Id="%AID%_PS-nnn" Text="更多信息见 https://www.sciencedirect.com/science/article/pii/S0038092X20311488?via%3Dihub。"  />
 
               </ParameterBlock>
 

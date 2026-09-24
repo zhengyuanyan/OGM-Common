@@ -1,4 +1,4 @@
-﻿### Zeitzone
+﻿### 时区
 
-Für die korrekte Berechnung der Zeit wird die Zeitzone des Standortes benötigt.
+为了正确计算时间，需要设备所在位置的时区。
 

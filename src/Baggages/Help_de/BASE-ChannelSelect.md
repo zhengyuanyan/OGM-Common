@@ -1,4 +1,4 @@
-﻿### Kanalauswahl
+﻿### 通道选择
 
-Hier werden alle verfügbaren Kanäle in einer Übersichtstabelle angezeigt. Für jeden Kanal lässt sich direkt festlegen, ob und in welcher Ausprägung er aktiv ist, sowie eine Beschreibung hinterlegen. Nur aktivierte Kanäle erscheinen anschließend als eigener Reiter mit den zugehörigen Einstellungen und Kommunikationsobjekten. Die Beschreibung bleibt auch bei einem deaktivierten Kanal sichtbar und editierbar.
+这里用一张总览表列出所有可用通道。每个通道都可以直接设置是否启用以及启用形式，并可以填写说明。只有已启用的通道才会作为单独的选项卡出现，并带有相应的设置和通信对象。即使通道被停用，说明仍然可见并可编辑。
 

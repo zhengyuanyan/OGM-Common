@@ -1,45 +1,45 @@
 ﻿### POSIX TZ-String
 
-**Allgemeiner Aufbau:**
+**基本结构：**
 
 `STD[+/-]hh[:mm[:ss]][DST[+/-]hh[:mm[:ss]][,Start[/Time],End[/Time]]]`
 
-**Bedeutung der einzelnen Teile:**
+**各部分含义：**
 
 - `STD`  
-  Abkürzung der Standardzeit (z. B. `CET` für Mitteleuropäische Zeit).
+  标准时间的缩写（例如 `CET`，中欧时间）。
 
 - `[+/-]hh[:mm[:ss]]`  
-  Zeitverschiebung zur UTC. Positive Werte sind westlich von Greenwich (z. B. USA), negative Werte östlich (z. B. Europa).  
-  Beispiel: `-1` für Mitteleuropa (eine Stunde östlich von UTC).
+  相对 UTC 的偏移量。正值位于格林尼治以西（例如美国），负值位于以东（例如欧洲）。  
+  例如：`-1` 表示中欧（UTC 以东 1 小时）。
 
 - `DST`  
-  Abkürzung der Sommerzeit (z. B. `CEST` für Mitteleuropäische Sommerzeit).
+  夏令时的缩写（例如 `CEST`，中欧夏令时）。
 
 - `[+/-]hh[:mm[:ss]]`  
-  (Optional) Abweichung der Sommerzeit zur Standardzeit.
+  （可选）夏令时相对标准时间的偏移。
 
 - `,Start[/Time],End[/Time]`  
-  (Optional) Regeln, wann die Sommerzeit beginnt und endet.  
-  Format: `M<m>.<w>.<d>` (Monat, Woche, Wochentag), z. B. `M3.5.0` = letzter Sonntag im März.
+  （可选）夏令时开始和结束的规则。  
+  格式：`M<m>.<w>.<d>`（月、周、星期），例如 `M3.5.0` = 三月的最后一个星期日。
 
 
-**Beispiel für Mitteleuropa (Deutschland):**
+**中欧（德国）示例：**
 
 `CET-1CEST,M3.5.0/2:00:00,M10.5.0/3:00:00`
 
-- `CET` = Standardzeit (Central European Time)
-- `-1` = 1 Stunde östlich von UTC
-- `CEST` = Sommerzeit (Central European Summer Time)
-- `M3.5.0/2:00:00` = Sommerzeit beginnt am letzten Sonntag im März um 2:00 Uhr
-- `M10.5.0/3:00:00` = Sommerzeit endet am letzten Sonntag im Oktober um 3:00 Uhr
+- `CET` = 标准时间（Central European Time）
+- `-1` = UTC 以东 1 小时
+- `CEST` = 夏令时（Central European Summer Time）
+- `M3.5.0/2:00:00` = 夏令时在三月的最后一个星期日 2:00 开始
+- `M10.5.0/3:00:00` = 夏令时在十月的最后一个星期日 3:00 结束
 
 
-**Weitere Beispiele:**
+**更多示例：**
 
-- UTC (keine Sommerzeit):  
+- UTC（无夏令时）：  
   `UTC0`
 
-- New York (USA, mit Sommerzeit):  
+- 纽约（美国，有夏令时）：  
   `EST5EDT,M3.2.0/2,M11.1.0/2`
 

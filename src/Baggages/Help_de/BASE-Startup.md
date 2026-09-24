@@ -1,8 +1,8 @@
-﻿### Startverzögerung
+﻿### 启动延时
 
-Hier kann man festlegen, wie viel Zeit vergehen soll, bis das Gerät nach einem Neustart seine Funktion aufnimmt. Dabei ist es egal, ob der Neustart durch einen Busspannungsausfall, einen Reset über den Bus, durch ein Drücken der Reset-Taste oder durch den Watchdog ausgelöst wurde.
+在这里可以设定设备重启后需要多久才开始工作。无论重启是由总线电压中断、通过总线复位、按下复位按钮还是由看门狗引起的，该设置都适用。
 
-Da das Gerät prinzipiell (sofern parametriert) auch Lesetelegramme auf den Bus senden kann, kann mit dieser Einstellung verhindert werden, dass bei einem Busneustart von vielen Geräten viele Lesetelegramme auf einmal gesendet werden und so der Bus überlastet wird.
+由于设备原则上（在已参数化的情况下）也会向总线发送读取报文，通过该设置可以避免众多设备在总线重启时同时发送大量读取报文，从而导致总线过载。
 
-**Anmerkung:** Auch wenn man hier technisch bis zu 16.000 Stunden Verzögerung angeben kann, sind nur Einstellungen im Sekundenbereich sinnvoll.
+**注意：** 虽然这里技术上最多可以设置 16000 小时的延时，但只有以秒为单位的设置才有实际意义。
 

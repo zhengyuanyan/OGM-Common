@@ -1,35 +1,35 @@
 <!-- DOC HelpContext="ChannelName"-->
-### Beschreibung
+### 说明
 
-Der hier angegebene Name wird an verschiedenen Stellen verwendet, um diesen Kanal wiederzufinden.
+这里输入的名称会在多个位置用于识别该通道。
 
-* Seitenbeschreibung des Kanals
-* Name vom Kommunikationsobjekt
+* 通道的页面说明
+* 通信对象的名称
 
-Eine aussagekräftige Benennung erlaubt eine einfachere Orientierung innerhalb der Applikation, vor allem wenn man viele Kanäle nutzt.
+使用有意义的名称可以让应用内的导航更容易，尤其是在通道很多的时候。
 
 <!-- DOC HelpContext="Comment"-->
-### Kommentar
+### 注释
 
-Hier kann man einen Freitext eingeben, der den Kanal beschreibt. Dieser Text kann mehrzeilig sein. Leider unterstütz die ETS von sich aus keine mehrzeiligen Texte. Mit dem Button unter der Textbox kann man alle Eingaben der Zeichenfolge '\n' in neue Zeilen umwandeln lassen. 
+这里可以输入一段自由文本，用于描述该通道。这段文本可以是多行的。遗憾的是 ETS 本身不支持多行文本。通过文本框下面的按钮，可以把输入中出现的字符序列 '\n' 转换为换行。 
 
-<!-- DOC -->
-### Verfügbare Kanäle
+<!-- DOC HelpContext="Verfuegbare-Kanaele" -->
+### 可用通道
 
-Um die Applikation übersichtlicher zu gestalten, kann hier ausgewählt werden, wie viele Kanäle in der Applikation verfügbar und editierbar sind. Die Maximalanzahl der Kanäle hängt von der Firmware des Gerätes ab, dass dieses Modul verwendet.
+为了让应用结构更清晰，这里可以选择应用中有多少个通道可用并可编辑。通道的最大数量取决于使用该模块的设备固件。
 
-Die ETS ist auch schneller in der Anzeige, wenn sie weniger (leere) Kanäle darstellen muss. Insofern macht es Sinn, nur so viele Kanäle anzuzeigen, wie man wirklich braucht.
+ETS 需要显示的空通道越少，界面响应也越快。因此只显示真正需要的通道数量是合理的。
 
-Hinweis: Dies ist ein älteres Verfahren. Neuere Module verwenden stattdessen die Kanalauswahl-Tabelle, in der alle Kanäle direkt aktiviert bzw. deaktiviert werden können.
+注意：这是一种较早的做法。较新的模块改用通道选择表格，可以在表格中直接启用或停用所有通道。
 
 <!-- DOC HelpContext="ChannelSelect" -->
-### Kanalauswahl
+### 通道选择
 
-Hier werden alle verfügbaren Kanäle in einer Übersichtstabelle angezeigt. Für jeden Kanal lässt sich direkt festlegen, ob und in welcher Ausprägung er aktiv ist, sowie eine Beschreibung hinterlegen. Nur aktivierte Kanäle erscheinen anschließend als eigener Reiter mit den zugehörigen Einstellungen und Kommunikationsobjekten. Die Beschreibung bleibt auch bei einem deaktivierten Kanal sichtbar und editierbar.
+这里用一张总览表列出所有可用通道。每个通道都可以直接设置是否启用以及启用形式，并可以填写说明。只有已启用的通道才会作为单独的选项卡出现，并带有相应的设置和通信对象。即使通道被停用，说明仍然可见并可编辑。
 
 <!-- DOC HelpContext="ChannelSuspended" -->
-### Suspendiert
+### 挂起
 
-Damit lässt sich ein einzelner Kanal vorübergehend abschalten, zum Beispiel für Testzwecke, ohne ihn komplett zu deaktivieren. Der Unterschied zum vollständigen Deaktivieren ist wichtig: Beim Deaktivieren verschwinden die Kommunikationsobjekte des Kanals aus der ETS, wodurch auch alle Gruppenadress-Verknüpfungen verloren gehen. Beim Suspendieren bleiben die Kommunikationsobjekte und ihre Verknüpfungen erhalten, der Kanal setzt seine Funktion nur vorübergehend aus. Nach dem Aufheben der Suspendierung ist der Kanal sofort wieder mit denselben Verknüpfungen einsatzbereit.
+通过该设置可以临时关闭单个通道，例如用于测试目的，而不必完全停用它。与完全停用的区别很重要：停用时通道的通信对象会从 ETS 中消失，从而丢失所有组地址关联。挂起时通信对象及其关联会保留，通道只是暂时停止工作。取消挂起后，通道立即可以按原有连接继续使用。
 
-Das ist auch bei der Fehlersuche hilfreich: Verhält sich die Anlage unerwartet, lässt sich ein bereits fertig parametrierter Kanal gezielt suspendieren, um zu prüfen, ob er die Ursache ist, ohne danach die komplette Konfiguration und Verknüpfung erneut aufbauen zu müssen.
+这在排查故障时也很有帮助：如果系统出现异常，可以针对性地挂起一个已经参数化好的通道，以检查它是否是原因，而不必事后重新建立完整的配置和关联。

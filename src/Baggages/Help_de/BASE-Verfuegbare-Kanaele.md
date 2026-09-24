@@ -1,8 +1,8 @@
-﻿### Verfügbare Kanäle
+﻿### 可用通道
 
-Um die Applikation übersichtlicher zu gestalten, kann hier ausgewählt werden, wie viele Kanäle in der Applikation verfügbar und editierbar sind. Die Maximalanzahl der Kanäle hängt von der Firmware des Gerätes ab, dass dieses Modul verwendet.
+为了让应用结构更清晰，这里可以选择应用中有多少个通道可用并可编辑。通道的最大数量取决于使用该模块的设备固件。
 
-Die ETS ist auch schneller in der Anzeige, wenn sie weniger (leere) Kanäle darstellen muss. Insofern macht es Sinn, nur so viele Kanäle anzuzeigen, wie man wirklich braucht.
+ETS 需要显示的空通道越少，界面响应也越快。因此只显示真正需要的通道数量是合理的。
 
-Hinweis: Dies ist ein älteres Verfahren. Neuere Module verwenden stattdessen die Kanalauswahl-Tabelle, in der alle Kanäle direkt aktiviert bzw. deaktiviert werden können.
+注意：这是一种较早的做法。较新的模块改用通道选择表格，可以在表格中直接启用或停用所有通道。
 
